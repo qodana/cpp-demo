@@ -22,17 +22,11 @@ jobs:
           password: ${{ secrets.SPACE_PASSWORD }}
       - run: docker pull registry.jetbrains.team/p/sa/containers/qodana-cpp:2024.2-nightly
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2024
+        uses: JetBrains/qodana-action@2024.1.8
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
           args: "--linter,registry.jetbrains.team/p/sa/containers/qodana-cpp:2024.2-nightly"
-      - name: 'Deploy to GitHub Pages'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ runner.temp }}/qodana/results/report
-          destination_dir: ./
       - name: 'Upload artifacts'
         uses: actions/upload-artifact@v3
         with:
