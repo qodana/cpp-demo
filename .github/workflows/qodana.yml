@@ -18,7 +18,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: registry.jetbrains.team
-          username: Dmitry.Golovinov
+          username: ${{ secrets.SPACE_USER }}
           password: ${{ secrets.SPACE_PASSWORD }}
       - run: docker pull registry.jetbrains.team/p/sa/containers/qodana-cpp:2024.2-nightly
       - name: 'Qodana Scan'
