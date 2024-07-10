@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.SPACE_PASSWORD }}
       - run: docker pull registry.jetbrains.team/p/sa/containers/qodana-cpp:2024.2-nightly
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@2024.1.8
+        uses: JetBrains/qodana-action@v2024.1.8
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
